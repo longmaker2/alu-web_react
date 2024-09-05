@@ -1,7 +1,6 @@
-// interesting jquery import thanks to babel
-import $ from "jquery";
-// styles
-import "./footer.css";
+'use strict';
+const $ = require('jquery');
+import './footer.css';
 
-// append elements
-$("body").append(`<p>Copyright - Holberton School</p>`);
+$('body').append('<footer></footer>');
+$('footer').append('<p>Copyright - Holberton School</p>');
