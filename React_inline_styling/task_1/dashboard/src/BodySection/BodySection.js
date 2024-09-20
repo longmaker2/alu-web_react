@@ -1,41 +1,33 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { StyleSheet, css } from "aphrodite";
+import React, { Component } from 'react';
+import propTypes from 'prop-types';
 
+
+// Reusable component
 class BodySection extends Component {
-  constructor(props) {
-    super(props);
-  }
+	render() {
+		const { title } = this.props
 
-  render() {
-    const { children, title } = this.props;
-    return (
-      <div className={css(styles.bodySection)}>
-        <h2 className={css(styles.bodySectionH2)}>{title}</h2>
-        {children}
-      </div>
-    );
-  }
+		return (
+			<div className="BodySection">
+				<h2>{title}</h2>
+				{/* All remaining prop children are put into this span */}
+				<span>{this.props.children}</span>
+			</div>
+		)
+	}
 }
 
-BodySection.defaultProps = {
-  title: "",
-};
 
 BodySection.propTypes = {
-  title: PropTypes.string,
-};
+	title: propTypes.string.isRequired,
+	children: propTypes.oneOfType([
+		propTypes.string,
+		propTypes.element
+	])
+}
 
-const styles = StyleSheet.create({
-  bodySection: {
-    display: "flex",
-    flexWrap: "wrap",
-    width: "100%",
-  },
+BodySection. defaultProps = {
+	children: <React.Fragment />
+}
 
-  bodySectionH2: {
-    width: "100%",
-  },
-});
-
-export default BodySection;
+export default BodySection
